@@ -4,23 +4,34 @@ import numpy as np
 
 
 
-def edge_at_row(img, column):
-    """finds edge point in a column."""
-    data = img[:,column]
-    threshold = 10/306*(column-300)+60
-        #np.mean(image[280:514, 326:594]))
-    c=0
-    i=0
-    while i<367:
-        if data[i] > threshold:
-            break
-        i=i+1
-
-    while i<367:
-        if data[i] < threshold:
-            break
-        i=i+1
-    edge = [i,column]
+def find_edge(img):
+    #filter the image
+    filt = cv2.bilateralFilter(img, d=2, sigmaColor=75, sigmaSpace=75)
+    #generate a black image to put our edge points on
+    edge = np.zeros((369, 606), dtype=np.uint8)
+    # set a column value
+    col = 0
+    while col<605:
+        #threshold changes linearly across the image kinda like this
+        threshold = 10 / 306 * (col - 300) + 60
+        #row value set to zero before each column itterated through
+        i=0
+        #grab a vertical row
+        data = filt[:, col]
+        #itterate through the column untill its above the threshold
+        while i<367:
+            if data[i] > threshold:
+                break
+            i=i+1
+        #itterate through the column until the data goes below the threshold
+        while i<367:
+            if data[i] < threshold:
+                break
+            i=i+1
+        #make the edge a point in the edge image/matrix
+        edge[i,col] = 255
+        #go to the next column
+        col = 1+ col
 
     return edge
 
@@ -28,22 +39,14 @@ def edge_at_row(img, column):
 
 # Create a window with trackbars
 cv2.namedWindow('My edge detection')
-cv2.createTrackbar('Column', 'My edge detection', 0, 605, lambda x: x)
-
-
+#cv2.createTrackbar('Column', 'My edge detection', 0, 605, lambda x: x)
+image = cv2.imread('Data/rcphoto2370um30psi_2019.jpg')
+img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 while True:
-    # Get the current trackbar values
-    column = cv2.getTrackbarPos('Column', 'My edge detection')
-    image = cv2.imread('Data/rcphoto2370um30psi_2019.jpg')
-    img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    # Apply Canny edge detection
-    img = cv2.bilateralFilter(img,d=2, sigmaColor=75, sigmaSpace=75)
 
-    edge = edge_at_row(img, column)
-    black = np.zeros((369,606),dtype=np.uint8)
-    black[edge[0],edge[1]] = 255
+    edge = find_edge(img)
     # Display the result
-    cv2.imshow('Scan Detection', cv2.add(img, black))
+    cv2.imshow('Scan Detection', cv2.add(img, edge))
     #open cv make a black image of zeros then insert the edge at a point
 
     # Break the loop if 'q' is pressed
