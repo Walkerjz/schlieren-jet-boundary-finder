@@ -6,14 +6,14 @@ import numpy as np
 
 def find_edge(img):
     #filter the image
-    filt = cv2.bilateralFilter(img, d=2, sigmaColor=75, sigmaSpace=75)
+    filt = cv2.bilateralFilter(img, d=5, sigmaColor=75, sigmaSpace=75)
     #generate a black image to put our edge points on
     edge = np.zeros((369, 606), dtype=np.uint8)
     # set a column value
     col = 0
     while col<605:
         #threshold changes linearly across the image kinda like this
-        threshold = 10 / 306 * (col - 300) + 60
+        threshold = 9 / 306 * (col - 300) + 60
         #row value set to zero before each column itterated through
         i=0
         #grab a vertical row
@@ -40,7 +40,8 @@ def find_edge(img):
 # Create a window with trackbars
 cv2.namedWindow('My edge detection')
 #cv2.createTrackbar('Column', 'My edge detection', 0, 605, lambda x: x)
-image = cv2.imread('Data/rcphoto2370um30psi_2019.jpg')
+path = ['Data/rcphoto2370um30psi_2019.jpg','Data/rcphoto2270um24psi_2016.jpg','Data/rcphoto2370um10psi_2019.jpg']
+image = cv2.imread(path[2])
 img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 while True:
 

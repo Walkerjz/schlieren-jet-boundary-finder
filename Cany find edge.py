@@ -26,7 +26,8 @@ def apply_canny(image, low_threshold, high_threshold):
     return edges, gray
 
 # Read the image
-image = cv2.imread('Data/rcphoto2370um30psi_2019.jpg')
+path = ['Data/rcphoto2370um30psi_2019.jpg','Data/rcphoto2270um24psi_2016.jpg','Data/rcphoto2370um10psi_2019.jpg']
+image = cv2.imread(path[2])
 
 # Create a window with trackbars
 cv2.namedWindow('Canny Edge Detection')
