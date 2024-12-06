@@ -46,9 +46,3 @@ while True:
     cv2.imshow('Scan Detection', cv2.add(img, black))
     #open cv make a black image of zeros then insert the edge at a point
 
-    # Break the loop if 'q' is pressed
-    if cv2.waitKey(1) == ord('q'):
-        break
-
-
-cv2.destroyAllWindows()

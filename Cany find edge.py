@@ -1,12 +1,6 @@
 import cv2
 import numpy as np
 
-"""
-Where do canny thresholds come from? can I set them by averaging the white space?
-"""
-
-
-
 def apply_canny(image, low_threshold, high_threshold):
     """Applies Canny edge detection with adjustable thresholds."""
 
@@ -27,7 +21,7 @@ def apply_canny(image, low_threshold, high_threshold):
 
 # Read the image
 path = ['Data/rcphoto2370um30psi_2019.jpg','Data/rcphoto2270um24psi_2016.jpg','Data/rcphoto2370um10psi_2019.jpg']
-image = cv2.imread(path[2])
+image = cv2.imread(path[0])
 
 # Create a window with trackbars
 cv2.namedWindow('Canny Edge Detection')
@@ -44,7 +38,6 @@ while True:
 
     # Display the result
     cv2.imshow('Canny Edge Detection', cv2.add(edges,grey))
-
 
     # Break the loop if 'q' is pressed
     if cv2.waitKey(1) == ord('q'):
