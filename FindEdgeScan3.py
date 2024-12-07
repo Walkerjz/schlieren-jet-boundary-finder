@@ -10,26 +10,20 @@ def find_edge(img):
     #generate a black image to put our edge points on
     edge = np.zeros((369, 606), dtype=np.uint8)
     # set a column value
-    col = 0
-    while col<605:
-        #threshold changes linearly across the image kinda like this
-        threshold = 9 / 306 * (col - 300) + 60
-        #row value set to zero before each column itterated through
-        i=0
-        #grab a vertical row
-        data = filt[:, col]
-        #itterate through the column untill its above the threshold
-        while i<367:
-            if data[i] > threshold:
-                break
-            i=i+1
-        #itterate through the column until the data goes below the threshold
-        while i<367:
-            if data[i] < threshold:
-                break
-            i=i+1
+    row = 0
+
+    while row<368:
+        #grab a horizontal row
+        data = filt[row, :]
+
+        #itterate through the column until its above the threshold
+        while True:
+            avg = np.convolve(data, np.ones(10)/10)
+            diff = abs(data - avg)
+
+
         #make the edge a point in the edge image/matrix
-        edge[i,col] = 255
+        edge[row,i] = 255
         #go to the next column
         col = 1+ col
 

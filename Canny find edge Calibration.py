@@ -12,7 +12,8 @@ def apply_canny(image, low_threshold, high_threshold):
 
     # Apply Canny edge detection
     #filt = cv2.GaussianBlur(gray, (7,7),0)
-    filt = cv2.bilateralFilter(gray,d=12, sigmaColor=1000, sigmaSpace=75)
+    #d=12 works well for Data/rcphoto2370um30psi_2019.jpg
+    filt = cv2.bilateralFilter(gray,d=5, sigmaColor=1000, sigmaSpace=75)
 
     edges = cv2.Canny(filt, low_threshold, high_threshold, apertureSize=5)
     """L2gradient=True,"""
@@ -20,8 +21,12 @@ def apply_canny(image, low_threshold, high_threshold):
     return edges, gray
 
 # Read the image
-path = ['Data/rcphoto2370um30psi_2019.jpg','Data/rcphoto2270um24psi_2016.jpg','Data/rcphoto2370um10psi_2019.jpg']
-image = cv2.imread(path[0])
+path = ['Data/rcphoto2370um30psi_2019.jpg','Data/rcphoto2270um24psi_2016.jpg','Data/rcphoto2370um10psi_2019.jpg', 'Data/TARED1810um22psi.jpg']
+psipath = ['Data/1800um/Tare1810um10psi.jpg','Data/1800um/Tare1810um15psi.jpg','Data/1800um/Tare1810um20psi.jpg','Data/1800um/Tare1810um21psi.jpg']
+#canny thresholds of 0 and 207 work for the psipath files to answer question 3 and a filter d=5
+slotpath = ['Data/25psi/TareMask1940um25psi.jpg','Data/25psi/TareMask2210um25psi.jpg','Data/25psi/Tare2370um25psi.jpg','Data/25psi/Tare2730um25psi.jpg']
+#canny thresholds of 0 and 154 work for the slotpath files to answer question 2 and a filter d=5
+image = cv2.imread(slotpath[3])
 
 # Create a window with trackbars
 cv2.namedWindow('Canny Edge Detection')

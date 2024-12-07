@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 #choose file
-filepath = 'Data/rcphoto2370um30psi_2019.jpg'
+filepath = 'Data/rcphoto2370um3psi_2019.jpg'
 #load image
 img = plt.imread(filepath)
 #convert to array
