@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy.core.function_base import linspace
 
-
 def extract_edges(edges):
     edgeX = []
     edgeY = []
@@ -34,10 +33,12 @@ while True:
     cv2.imshow('Raw Image',rawimg)
     cv2.imshow('Tared Image', gray)
     cv2.imshow('Edges', cv2.add(gray,CanEdges))
-    if cv2.waitKey(1) == ord('q'):
-        break
+    break
 
 X,Y = extract_edges(CanEdges)
 plt.imshow(rawimg)
+plt.xlabel('x-pixels')
+plt.ylabel('y-pixels')
+plt.title('edge detection (in blue)')
 plt.plot(X,Y)
 plt.show()
