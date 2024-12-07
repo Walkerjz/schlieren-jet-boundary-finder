@@ -1,5 +1,3 @@
-from cProfile import label
-
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,8 +13,6 @@ def extract_edges(edges):
         j = 605
         while j>=0:
             if edges[i,j] == 255:
-                #edgeX = np.append(j)
-                #edgeY = np.append(i)
                 edgeX.append(j)
                 edgeY.append(i)
                 break
@@ -28,13 +24,10 @@ def extract_edges(edges):
 psipath = ['Data/1800um/Tare1810um10psi.jpg','Data/1800um/Tare1810um15psi.jpg','Data/1800um/Tare1810um20psi.jpg','Data/1800um/Tare1810um21psi.jpg']
 #canny thresholds of 0 and 207 work for the psipath files to answer question 3 and a filter d=5
 
-
-
 for file in psipath:
     image = cv2.imread(file)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     filt = cv2.bilateralFilter(gray, d=5, sigmaColor=75, sigmaSpace=75)
-    cv2.namedWindow('Edge')
     CanEdges = cv2.Canny(filt, 0, 207, apertureSize=5)
     X, Y = extract_edges(CanEdges)
     z = np.polyfit(X,Y,3)
