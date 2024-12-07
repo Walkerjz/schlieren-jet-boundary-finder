@@ -26,7 +26,7 @@ psipath = ['Data/1800um/Tare1810um10psi.jpg','Data/1800um/Tare1810um15psi.jpg','
 #canny thresholds of 0 and 207 work for the psipath files to answer question 3 and a filter d=5
 slotpath = ['Data/25psi/TareMask1940um25psi.jpg','Data/25psi/TareMask2210um25psi.jpg','Data/25psi/Tare2370um25psi.jpg','Data/25psi/Tare2730um25psi.jpg']
 #canny thresholds of 0 and 154 work for the slotpath files to answer question 2 and a filter d=5
-image = cv2.imread(slotpath[3])
+image = cv2.imread(psipath[0])
 
 # Create a window with trackbars
 cv2.namedWindow('Canny Edge Detection')

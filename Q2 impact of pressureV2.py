@@ -15,8 +15,6 @@ def extract_edges(edges):
         j = 605
         while j>=0:
             if edges[i,j] == 255:
-                #edgeX = np.append(j)
-                #edgeY = np.append(i)
                 edgeX.append(j)
                 edgeY.append(i)
                 break
@@ -43,21 +41,28 @@ for file in psipath:
     p = np.poly1d(z)
     edge_data.append([X,Y,p])
 
-
-
 dom = linspace(300,450, 450-300)
-thing = edge_data[0][2]
 plt.subplot(1,2,2)
-plt.plot(dom,edge_data[0][2](dom),'-',label = file,)
-
-plt.subplot(1, 2, 1)
-
-plt.scatter(X,Y,label = file)
+i = 0
+while i<len(edge_data):
+    plt.plot(dom,edge_data[i][2](dom),'-',label = psipath[i])
+    print('Best fit for '+ str(psipath[i]) + ' is: ')
+    print(str(edge_data[i][2]))
+    i = i+1
 
 ax1 = plt.gca()
-ax2 = plt.gca()
 ax1.invert_yaxis()
+plt.legend()
+
+
+plt.subplot(1, 2, 1)
+i = 0
+while i<len(edge_data):
+    plt.scatter(edge_data[i][0],edge_data[i][1],label = psipath[i])
+    i = i+1
+ax2 = plt.gca()
 ax2.invert_yaxis()
+
 # show plot
 plt.legend()
 plt.show()
