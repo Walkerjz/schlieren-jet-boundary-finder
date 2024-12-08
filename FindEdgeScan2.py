@@ -41,7 +41,7 @@ def find_edge(img):
 cv2.namedWindow('My edge detection')
 #cv2.createTrackbar('Column', 'My edge detection', 0, 605, lambda x: x)
 path = ['Data/rcphoto2370um30psi_2019.jpg','Data/rcphoto2270um24psi_2016.jpg','Data/rcphoto2370um10psi_2019.jpg']
-image = cv2.imread(path[2])
+image = cv2.imread(path[0])
 img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 while True:
 

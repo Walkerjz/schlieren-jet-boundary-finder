@@ -2,7 +2,11 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy.core.function_base import linspace
-
+'''
+--------------------------------------------------------
+OLD VERSION OF Q2 FILE
+--------------------------------------------------------
+'''
 
 def extract_edges(edges):
     edgeX = []
