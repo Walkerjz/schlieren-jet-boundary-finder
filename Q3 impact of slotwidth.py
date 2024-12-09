@@ -11,7 +11,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy.core.function_base import linspace
 
-
 def extract_edges(edges):
     '''This function takes a canny edge detection file and returns the right-most edges arrays of X and Y coordinates'''
     # create arrays for X and Y coordinates
