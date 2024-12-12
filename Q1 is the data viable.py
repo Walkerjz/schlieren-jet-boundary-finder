@@ -69,3 +69,8 @@ plt.ylabel('y-pixels')
 plt.title('edge detection (in blue)')
 plt.plot(X,Y)
 plt.show()
+
+#print out X and X points because we need a metric to print out
+print('Hey look! Some wild metrics have appeared! Its the-edge-points-I-detected')
+print('the X coordinates ' + str(X))
+print('the Y coordinates ' + str(Y))

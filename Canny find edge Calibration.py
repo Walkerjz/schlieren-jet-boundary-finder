@@ -33,7 +33,7 @@ slotpath = ['Data/25psi/TareMask1940um25psi.jpg','Data/25psi/TareMask2210um25psi
 #canny thresholds of 0 and 175 work for the slotpath files to answer question 2 and a filter d=5
 
 #read image from one of the arrays
-image = cv2.imread(psipath[0])
+image = cv2.imread(path[0])
 
 # Create a window with trackbars
 cv2.namedWindow('Canny Edge Detection')

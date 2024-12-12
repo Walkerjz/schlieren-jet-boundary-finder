@@ -74,11 +74,10 @@ for file in slotpath:
     edge_data.append([X,Y,p])
 
 #create a domain to evaluate the lines of best fits across
-dom = linspace(300,450, 450-300)
+dom = linspace(400,600, 600-400)
 #create two subplots
 f, (ax1, ax2) = plt.subplots(1, 2)
-#invert the x-axis for the lines of best fit so they are visually comparable
-ax2.invert_xaxis()
+
 
 #iterate through file list
 i = 0
@@ -96,6 +95,8 @@ ax2.legend()
 ax2.set_title('Edge Line-of-Best-Fit Results')
 ax2.set_ylabel('y-pixels')
 ax2.set_xlabel('x-pixels')
+#invert the x-axis for the lines of best fit so they are visually comparable
+ax2.invert_yaxis()
 
 #iterate through file list
 i = 0

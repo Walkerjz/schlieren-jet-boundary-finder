@@ -126,9 +126,9 @@ These results demonstrate that the analysis can be done and that the data set is
 ![img_8.png](img_8.png)
 
 
-This is a sample of the resluts from the Q3 file showing the edge points and lines of best fit for all the files 
+This is a sample of the results from the Q3 file showing the edge points and lines of best fit for all the files 
 compared to each other.
-![img_14.png](img_14.png)
+![img_16.png](img_16.png)
 
 
 The lines of best fit from the above graph are printed below.
