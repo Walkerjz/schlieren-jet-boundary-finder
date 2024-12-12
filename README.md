@@ -75,6 +75,7 @@ Finally, subtract the mask to remove any unwanted artifacts in the selected regi
 
 **Use of files**
 Video walkthrough: 
+
 [Video Example.mp4](Video%20Example.mp4)
 
 _Canny find edge Calibration:_
