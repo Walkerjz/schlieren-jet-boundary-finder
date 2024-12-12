@@ -74,7 +74,8 @@ One can free select an area on an image as seen in the image above and select cr
 Finally, subtract the mask to remove any unwanted artifacts in the selected region.
 
 **Use of files**
-Video walkthrough: [Video Example.mp4](Video%20Example.mp4)
+Video walkthrough: 
+[Video Example.mp4](Video%20Example.mp4)
 
 _Canny find edge Calibration:_
 This file allows one to select filter parameters and canney edge detection thresholds that work for a data set.
